@@ -1,33 +1,24 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileModule8Task4
 {
+    [Serializable]
     class Student
     {
-        string name;
-        
+        public string Name { get; set; }
+        public string Group { get; set; }
+        public DateTime BirthDate { get; set; }
 
-        public string path = "C:/Users/Анатолий/Desktop/Students.dat";
-
-        public void ReadFile()
+        public Student (string n, string g, DateTime b)
         {
-            using (FileStream fs = new FileStream(path, FileMode.Open))
-            {
-                using (BinaryReader br = new BinaryReader(fs))
-                {
-                    fs.Position = 0x123;
-                    name = br.ReadString();
+            Name = n;
+            Group = g;
+            BirthDate = b;
 
-                }
-                Console.WriteLine(name);
-            }
-            
         }
+
+
     }
 }
