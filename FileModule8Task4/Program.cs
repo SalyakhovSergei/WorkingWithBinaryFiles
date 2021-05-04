@@ -13,15 +13,14 @@ namespace FinalTask
 
             using (FileStream fs = new FileStream (path, FileMode.Open))
             {
+                Student [] st = (Student[])formatter.Deserialize(fs);
 
-#pragma warning disable SYSLIB0011 // Тип или член устарел
-                Student st = (Student)formatter.Deserialize(fs);
-#pragma warning restore SYSLIB0011 // Тип или член устарел
-                Console.WriteLine($"Имя: {st.Name} группа {st.Group} дата {st.BirthDate}");
-           }
-
+                foreach (var df in st)
+                {
+                    Console.WriteLine($"Имя: {df.Name} группа {df.Group} дата {df.BirthDate}");
+                }
+            }
             Console.ReadLine();
-            
         }
     }
 
