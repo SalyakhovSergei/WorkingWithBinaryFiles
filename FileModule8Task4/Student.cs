@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace FileModule8Task4
+namespace FinalTask
 {
     [Serializable]
     class Student
@@ -16,9 +16,7 @@ namespace FileModule8Task4
             Name = n;
             Group = g;
             BirthDate = b;
-
         }
-
-
+        
     }
 }

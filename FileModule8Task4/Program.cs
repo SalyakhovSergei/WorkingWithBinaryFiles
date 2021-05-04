@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace FileModule8Task4
+namespace FinalTask
 {
     class Program
     {
@@ -13,14 +13,16 @@ namespace FileModule8Task4
 
             using (FileStream fs = new FileStream (path, FileMode.Open))
             {
-#pragma warning disable SYSLIB0011
-                var st = (Student)formatter.Deserialize(fs);
+
+#pragma warning disable SYSLIB0011 // Тип или член устарел
+                Student st = (Student)formatter.Deserialize(fs);
+#pragma warning restore SYSLIB0011 // Тип или член устарел
                 Console.WriteLine($"Имя: {st.Name} группа {st.Group} дата {st.BirthDate}");
            }
 
             Console.ReadLine();
             
- 
         }
     }
+
 }
