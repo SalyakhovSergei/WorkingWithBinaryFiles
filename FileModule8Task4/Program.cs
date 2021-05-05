@@ -8,20 +8,31 @@ namespace FinalTask
     {
         static void Main(string[] args)
         {
-            string path = "C:/Users/admin/Desktop/Students.dat";
+            string path = "C:/Users/Анатолий/Desktop/Students.dat";
             BinaryFormatter formatter = new BinaryFormatter();
+            
+            Directory.CreateDir();
 
             using (FileStream fs = new FileStream (path, FileMode.Open))
             {
-                Student [] st = (Student[])formatter.Deserialize(fs);
+                Student [] students = (Student[])formatter.Deserialize(fs);
 
-                foreach (var df in st)
+                foreach (var st in students)
                 {
-                    Console.WriteLine($"Имя: {df.Name} группа {df.Group} дата {df.BirthDate}");
+                    string filePath = $"C:/Users/Анатолий/Desktop/Students/{st.Group}.txt";
+                    if (!File.Exists(filePath))
+                    {
+                        using (StreamWriter sw = File.AppendText(filePath))
+                        sw.WriteLine(st.Name + " " + st.BirthDate);
+                    }
+                    else 
+                    {
+                        using (StreamWriter sw = File.AppendText(filePath))
+                            sw.WriteLine(st.Name + " " + st.BirthDate);
+                    }
                 }
             }
             Console.ReadLine();
         }
     }
-
 }

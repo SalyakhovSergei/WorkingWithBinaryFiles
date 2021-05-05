@@ -9,10 +9,11 @@ namespace FinalTask
 {
     public class Directory
     {
-        public void CreateDir()
+        public static void CreateDir()
         {
-            DirectoryInfo newDirectory = new DirectoryInfo("C:/Users/admin/Desktop/testfolder");
+            DirectoryInfo newDirectory = new DirectoryInfo("C:/Users/Анатолий/Desktop/Students");
             if (!newDirectory.Exists) newDirectory.Create();
+
         }
     }
 }
