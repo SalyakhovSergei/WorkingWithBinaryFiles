@@ -17,20 +17,28 @@ namespace FinalTask
             {
                 Student [] students = (Student[])formatter.Deserialize(fs);
 
-                foreach (var st in students)
+                try
                 {
-                    string filePath = $"C:/Users/Анатолий/Desktop/Students/{st.Group}.txt";
-                    if (!File.Exists(filePath))
+                    foreach (var st in students)
                     {
-                        using (StreamWriter sw = File.AppendText(filePath))
-                        sw.WriteLine(st.Name + " " + st.BirthDate);
-                    }
-                    else 
-                    {
-                        using (StreamWriter sw = File.AppendText(filePath))
-                            sw.WriteLine(st.Name + " " + st.BirthDate);
+                        string filePath = $"C:/Users/Анатолий/Desktop/Students/{st.Group}.txt";
+                        if (!File.Exists(filePath))
+                        {
+                            using (StreamWriter sw = File.AppendText(filePath))
+                                sw.WriteLine(st.Name + " " + st.BirthDate);
+                        }
+                        else
+                        {
+                            using (StreamWriter sw = File.AppendText(filePath))
+                                sw.WriteLine(st.Name + " " + st.BirthDate);
+                        }
                     }
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                
             }
             Console.ReadLine();
         }
